@@ -1,0 +1,29 @@
+[OSEv3]
+
+[OSEv3:children]
+masters
+nodes
+etcd
+
+[OSEv3:vars]
+ansible_ssh_user=centos
+# ansible_python_interpreter=/usr/bin/python3
+become=True
+openshift_deployment_type=origin
+openshift_release=v3.7
+
+osm_cluster_network_cidr=10.128.0.0/14
+openshift_portal_net=172.30.0.0/16
+osm_host_subnet_length=9
+
+[masters]
+host1 openshift_node_labels="{'region': 'infra','zone': 'default'}" openshift_schedulable=true
+
+[etcd:children]
+masters
+
+[nodes]
+host2 openshift_node_labels="{'region': 'primary', 'zone': 'east'}"
+
+[nodes:children]
+masters

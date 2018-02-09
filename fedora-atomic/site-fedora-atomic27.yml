@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  tasks:
+    - ec2:
+        key_name: mysshkey
+        instance_type: m4.2xlarge
+        instance_tags:
+          sometag: someval
+          Name: somehost
+        image: ami-911948eb
+        ec2_url: https://ec2.us-east-1.amazonaws.com/
+        region: us-east-1
+        wait: yes
+        group: default
+        count: 2
+        vpc_subnet_id: mysubnetid
+        assign_public_ip: yes
+        # user_data: "{{ lookup('file', 'some_script.sh') }}"
