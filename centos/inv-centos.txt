@@ -8,7 +8,7 @@ etcd
 [OSEv3:vars]
 ansible_ssh_user=centos
 # ansible_python_interpreter=/usr/bin/python3
-become=True
+ansible_become=True
 openshift_deployment_type=origin
 openshift_release=v3.7
 
